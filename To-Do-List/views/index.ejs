@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do App</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>To-Do List</h1>
+
+  <form action="/add" method="POST">
+    <input type="text" name="task" placeholder="Enter task..." required>
+    <button class="add-btn">Add</button>
+  </form>
+
+  <ul>
+    <% todos.forEach((todo, index) => { %>
+
+      <li class="<%= todo.completed ? 'done' : '' %>">
+
+        <form action="/toggle/<%= index %>" method="POST">
+          <input type="checkbox"
+                 onchange="this.form.submit()"
+                 <%= todo.completed ? "checked" : "" %>>
+        </form>
+
+        <span><%= todo.text %></span>
+
+        <div class="actions">
+          <a href="/edit/<%= index %>" class="icon-btn edit-btn">
+            <img src="/icons/edit.png" alt="edit">
+          </a>
+
+          <form action="/delete/<%= index %>" method="POST">
+            <button class="icon-btn delete-btn">
+              <img src="icons/recycle-bin.png" alt="delete">
+            </button>
+          </form>
+        </div>
+
+      </li>
+
+    <% }) %>
+  </ul>
+</div>
+
+</body>
+</html>
