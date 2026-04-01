@@ -8,11 +8,29 @@ app.use(express.static("public"));
 let todos = [];
 
 app.get("/", (req, res) => {
-  res.render("index", { todos });
+  const search = req.query.search || "";
+  const status = req.query.status || "all";
+
+  let filteredTodos = todos.map((todo, index) => ({
+    ...todo,
+    originalIndex: index
+  }));
+
+  filteredTodos = filteredTodos.filter(todo =>
+    todo.text.toLowerCase().includes(search.toLowerCase())
+  );
+
+  if (status === "completed") {
+    filteredTodos = filteredTodos.filter(todo => todo.completed);
+  } else if (status === "pending") {
+    filteredTodos = filteredTodos.filter(todo => !todo.completed);
+  }
+
+  res.render("index", { todos: filteredTodos, search, status });
 });
 
 app.post("/add", (req, res) => {
-  const task = req.body.task;
+  const { task } = req.body;
 
   if (task) {
     todos.push({
@@ -24,7 +42,7 @@ app.post("/add", (req, res) => {
   res.redirect("/");
 });
 
-app.post("/delete/:id", (req, res) => {
+app.get("/delete/:id", (req, res) => {
   todos.splice(req.params.id, 1);
   res.redirect("/");
 });
@@ -46,5 +64,5 @@ app.post("/toggle/:id", (req, res) => {
   res.redirect("/");
 });
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Running on ${PORT}`));
+const port = 8000;
+app.listen(port, () => console.log(`Running on http://localhost:${port}`));
