@@ -1,0 +1,45 @@
+<footer class="app-footer">
+  <div class="container-fluid px-4">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <span class="footer-brand">Task<span>Manager</span></span>
+        <span class="footer-sep">·</span>
+        <span class="footer-copy">Real-Time Todo Management System</span>
+      </div>
+      <div class="col-md-6 text-md-end mt-2 mt-md-0">
+        <span class="footer-stack">
+          <i class="bi bi-server me-1"></i>Node.js
+          <i class="bi bi-dot"></i>Express.js
+          <i class="bi bi-dot"></i>EJS
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script>
+  document.querySelectorAll('.alert').forEach(alert => {
+    setTimeout(() => {
+      const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+      bsAlert.close();
+    }, 4000);
+  });
+
+  document.querySelectorAll('.task-table tbody tr').forEach(row => {
+    row.addEventListener('mouseenter', () => row.classList.add('row-hover'));
+    row.addEventListener('mouseleave', () => row.classList.remove('row-hover'));
+  });
+  
+  document.querySelectorAll('.btn-delete-form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      if (!confirm('Delete this task? This action cannot be undone.')) {
+        e.preventDefault();
+      }
+    });
+  });
+</script>
+</body>
+</html>

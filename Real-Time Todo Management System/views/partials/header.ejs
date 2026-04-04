@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo Management system</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="/css/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-4">
+
+    <a class="navbar-brand" href="/">
+      Task<span class="brand-accent">Manager</span>
+    </a>
+
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="bi bi-list text-white fs-4"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center gap-2">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="bi bi-grid-3x3-gap me-1"></i>Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-add-nav" href="/task/add">
+            <i class="bi bi-plus-circle me-1"></i>New Task
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

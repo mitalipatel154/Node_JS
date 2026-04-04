@@ -1,0 +1,93 @@
+<%- include('partials/header') %>
+
+<div class="page-wrapper form-page">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+
+        <a href="/" class="back-link mb-4 d-inline-flex align-items-center">
+          <i class="bi bi-arrow-left me-2"></i>Back to Dashboard
+        </a>
+
+        <div class="form-card">
+          <div class="form-card-header edit-header">
+            <h2 class="form-card-title">Edit Task <span class="task-id-badge">#<%= task.id %></span></h2>
+          </div>
+
+          <div class="current-status-bar">
+            <span class="cs-label">Current Status:</span>
+            <span class="status-badge status-<%= task.status.toLowerCase().replace(' ', '-') %>">
+              <span class="status-dot"></span>
+              <%= task.status %>
+            </span>
+            <span class="cs-hint">(Change status from the dashboard table)</span>
+          </div>
+
+          <% if (error) { %>
+          <div class="alert alert-danger custom-alert alert-dismissible fade show mx-4" role="alert">
+            <i class="bi bi-exclamation-circle me-2"></i><%= error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+          <% } %>
+
+          <div class="form-card-body">
+            <form action="/task/edit/<%= task.id %>" method="POST" novalidate>
+
+              <div class="mb-4">
+                <label class="form-label-custom" for="title">
+                  Task Title <span class="req">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  class="form-control form-control-custom"
+                  value="<%= task.title %>"
+                  maxlength="100"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label-custom" for="description">
+                  Description
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  class="form-control form-control-custom"
+                  rows="3"
+                  maxlength="300"
+                ><%= task.description %></textarea>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label-custom" for="priority">
+                  Priority
+                </label>
+                <select id="priority" name="priority" class="form-select form-control-custom">
+                  <option value="Low"    <%= task.priority === 'Low'    ? 'selected' : '' %>>Low</option>
+                  <option value="Medium" <%= task.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+                  <option value="High"   <%= task.priority === 'High'   ? 'selected' : '' %>>High</option>
+                </select>
+              </div>
+
+              <div class="d-flex gap-3">
+                <button type="submit" class="btn btn-primary-custom flex-fill">
+                  <i class="bi bi-floppy me-2"></i>Save Changes
+                </button>
+                <a href="/" class="btn btn-secondary-custom">
+                  Cancel
+                </a>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
