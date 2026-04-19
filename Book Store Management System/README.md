@@ -1,4 +1,4 @@
-# 📚 BookVault - Book Store Management System
+# 📚 Book Store Management System
 
 A web-based Book Store Management System built with Node.js, Express, MongoDB, EJS, and Multer. Allows users to manage book records with full CRUD operations and image upload support.
 
@@ -29,16 +29,16 @@ A web-based Book Store Management System built with Node.js, Express, MongoDB, E
 ## 📸 Screenshots
 
 ### Home Page - Book Inventory
-![Home Page](./public/assests/images/screenshots/home.png)
+<img src="./public/assests/images/screenshots/home.png" width="800">
 
 ### Add New Book
-![Add Book](./public/assests/images/screenshots/add-page.png)
+<img src="./public/assests/images/screenshots/add-page.png" width="800">
 
 ### Edit Book
-![Edit Book](./public/assests/images/screenshots/edit-page.png)
+<img src="./public/assests/images/screenshots/edit-page.png" width="800">
 
 ### Book Detail Page
-![Book Detail](./public/assests/images/screenshots/view-page.png)
+<img src="./public/assests/images/screenshots/view-page.png" width="800">
 
 ---
 
