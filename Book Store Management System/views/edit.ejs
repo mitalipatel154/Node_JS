@@ -1,0 +1,74 @@
+<%- include("partials/header") %>
+
+<div class="wrapper">
+  <div class="form-wrap">
+    <a href="/" class="back">Back to Books</a>
+    <h2>Edit Book</h2>
+
+    <div class="form-card">
+      <form action="/update/<%= book._id %>" method="POST" enctype="multipart/form-data" id="bookForm">
+        <div class="form-body">
+
+          <div class="field full">
+            <label>Book Cover Image</label>
+            <div class="file-upload-box" id="uploadBox">
+              <input type="file" name="image" id="imageInput" accept="image/*"/>
+              <% if (book.image) { %>
+                <img id="imgPreview" src="/uploads/<%= book.image %>" alt="Cover"/>
+                <div class="file-upload-inner" id="uploadInner" style="display:none;">
+              <% } else { %>
+                <div class="file-upload-inner" id="uploadInner">
+              <% } %>
+                  <p>Click or drag to replace cover</p>
+                  <span>Leave empty to keep current image</span>
+                </div>
+              <% if (!book.image) { %>
+                <img id="imgPreview" src="" alt="Preview"/>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field full">
+              <label>Book Title *</label>
+              <input type="text" name="title" value="<%= book.title %>" required/>
+            </div>
+            <div class="field">
+              <label>Author *</label>
+              <input type="text" name="author" value="<%= book.author %>" required/>
+            </div>
+            <div class="field">
+              <label>Category *</label>
+              <select name="category" required>
+                <% ['Fiction','Non-Fiction','Science','Technology','Finance','History',
+                    'Biography','Self-Help','Children','Romance','Mystery','Philosophy','Other']
+                  .forEach(cat => { %>
+                  <option value="<%= cat %>" <%= book.category === cat ? 'selected' : '' %>><%= cat %></option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="field">
+              <label>Price (Rs.) *</label>
+              <input type="number" name="price" value="<%= book.price %>" min="0" required/>
+            </div>
+            <div class="field">
+              <label>Quantity *</label>
+              <input type="number" name="quantity" value="<%= book.quantity %>" min="0" required/>
+            </div>
+            <div class="field full">
+              <label>Description</label>
+              <textarea name="description"><%= book.description %></textarea>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-footer">
+          <a href="/" class="btn btn-ghost">Cancel</a>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Update Book</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

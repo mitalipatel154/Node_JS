@@ -1,0 +1,53 @@
+<%- include("partials/header") %>
+
+<div class="wrapper">
+  <div class="page-heading">
+    <div>
+      <h1>Book Inventory</h1>
+      <p>Manage your entire collection in one place</p>
+    </div>
+    <div class="stat-chip">
+      <span class="num"><%= total %></span>
+      <span class="lbl">Total Books</span>
+    </div>
+  </div>
+
+  <% if (books.length === 0) { %>
+    <div class="empty-state">
+      <h2>No books yet</h2>
+      <p>Click <a href="/add">Add New Book</a> to get started.</p>
+    </div>
+  <% } else { %>
+    <div class="books-grid">
+      <% books.forEach(book => { %>
+        <div class="book-card">
+          <div class="book-cover">
+            <% if (book.image) { %>
+              <img src="/uploads/<%= book.image %>" alt="<%= book.title %>"/>
+            <% } else { %>
+              <div class="no-img">No Image</div>
+            <% } %>
+          </div>
+          <div class="book-body">
+            <span class="book-cat"><%= book.category %></span>
+            <div class="book-title"><%= book.title %></div>
+            <div class="book-author">by <%= book.author %></div>
+            <div class="book-meta">
+              <span class="book-price">Rs. <%= book.price %></span>
+              <span class="book-qty"><%= book.quantity %> in stock</span>
+            </div>
+            <div class="book-actions">
+              <a href="/show/<%= book._id %>" class="btn btn-outline btn-sm">View</a>
+              <a href="/edit/<%= book._id %>" class="btn btn-primary btn-sm">Edit</a>
+              <a href="/delete/<%= book._id %>"
+                 class="btn btn-danger btn-sm"
+                 onclick="return confirm('Delete this book?')">Delete</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include("partials/footer") %>
