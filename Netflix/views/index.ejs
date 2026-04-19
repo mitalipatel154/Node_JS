@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie App</title>
+  <!-- font css -->
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/assets/css/index.css" />
+</head>
+
+<body>
+
+  <%- include('header') %>
+    <!-- Hero-Banner -->
+    <section class="hero-banner flex">
+      <div class="overlay"></div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="hero-content flex justify-center">
+              <h1>Unlimited movies, shows, and more</h1>
+              <h3>Starts at ₹149. Cancel at any time.</h3>
+              <p>Ready to watch? Enter your email to create or restart your membership.</p>
+
+              <div class="get-started-btn">
+                <input type="email" placeholder="Email address" />
+                <button>Get Started</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="trending">
+      <div class="container">
+        <h2>Trending Now</h2>
+
+        <div class="row">
+            <div class="col-3">
+              <div class="movie-card">
+                <span class="rank">1</span>
+                <img src="/assets/images/trending/pic1.webp" />
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="movie-card">
+                <span class="rank">2</span>
+                <img src="/assets/images/trending/pic2.webp" />
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="movie-card">
+                <span class="rank">3</span>
+                <img src="/assets/images/trending/pic3.webp" />
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="movie-card">
+                <span class="rank">4</span>
+                <img src="/assets/images/trending/pic4.webp" />
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('footer') %>
+
+</body>
+
+</html>
