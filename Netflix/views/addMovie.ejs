@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie App</title>
+  <!-- font css -->
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/assets/css/index.css" />
+</head>
+
+<body>
+
+  <%- include('header') %>
+    <main>
+      <!-- AddMovie -->
+      <section class="pt-120 hero-banner flex justify-center add-movie">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="hero-content flex justify-center">
+                <h1>Add movies</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+      <!-- Add Form -->
+      <section class="add-form py-120">
+        <div class="container">
+          <div class="row flex justify-center">
+              <div class="col-8">
+                <form action="/addMovie" method="post" enctype="multipart/form-data" class="add-movie-form">
+
+                  <div class="form-row">
+                    <input type="text" name="title" placeholder="Title" required />
+                    <input type="text" name="languages" placeholder="Languages" />
+                  </div>
+
+                  <div class="form-row">
+                    <input type="number" name="releaseYear" placeholder="Release Year" />
+                    <input type="text" name="genre" placeholder="Genre" />
+                  </div>
+
+                  <div class="form-row">
+                    <input type="number" name="rating" placeholder="Rating" />
+                    <input type="text" name="duration" placeholder="Duration" />
+                  </div>
+
+                  <div class="form-row">
+                    <input type="text" name="actors" placeholder="Actors" />
+                    <input type="text" name="director" placeholder="Director" />
+                  </div>
+
+                  <div class="form-row single">
+                    <textarea name="desc" placeholder="Description" rows="5"></textarea>
+                  </div>
+
+                  <div class="form-row">
+                    <input type="file" name="poster" class="poster"/>
+                  </div>
+
+                  <button type="submit" class="submit-btn">Add Movie</button>
+
+                </form>
+              </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include('footer') %>
+
+</body>
+
+</html>

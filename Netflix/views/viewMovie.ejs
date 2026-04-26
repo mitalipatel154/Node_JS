@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+    <!-- font css -->
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="/assets/css/index.css" />
+</head>
+
+<body>
+
+    <%- include('header') %>
+        <main>
+            <!-- Hero Banner -->
+            <section class="pt-120 hero-banner flex justify-center add-movie">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="hero-content flex justify-center">
+                                <h1>All Movies</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Movie Table -->
+            <section class="py-120">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="movie-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Poster</th>
+                                        <th>Title</th>
+                                        <th>Genre</th>
+                                        <th>Languages</th>
+                                        <th>Duration</th>
+                                        <th>Release Year</th>
+                                        <th>Rating</th>
+                                        <th>Actors</th>
+                                        <th>Director</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% movies.forEach((movie, index)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= index + 1 %>
+                                            </td>
+                                            <td>
+                                                <img src="/assets/uploads/<%= movie.image %>" alt="<%= movie.title %>"
+                                                    class="table-poster" />
+                                            </td>
+                                            <td>
+                                                <%= movie.title %>
+                                            </td>
+                                            <td>
+                                                <%= movie.genre %>
+                                            </td>
+                                            <td>
+                                                <%= movie.languages.join(", ") %>
+                                            </td>
+                                            <td>
+                                                <%= movie.duration %>
+                                            </td>
+                                            <td>
+                                                <%= movie.releaseYear %>
+                                            </td>
+                                            <td>
+                                                <%= movie.rating %>
+                                            </td>
+                                            <td>
+                                                <%= movie.actors.join(" , ") %>
+                                            </td>
+                                            <td>
+                                                <%= movie.director.join(" , ") %>
+                                            </td>                                     
+                                            <td class=" action-btns">
+                                                <a href="/editMovie/<%= movie._id %>" class="btn-edit">Edit</a>
+                                                <a href="/deleteMovie/<%= movie._id %>" class="btn-delete"
+                                                    onclick="return confirm('Are you sure?')">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <%- include('footer') %>
+</body>
+
+</html>

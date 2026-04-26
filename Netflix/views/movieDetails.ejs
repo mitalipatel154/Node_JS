@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= movie.title %></title>
+  <!-- font css -->
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/assets/css/index.css" />
+</head>
+<body>
+
+  <%- include('header') %>
+  <main>
+
+    <!-- Hero Banner -->
+    <section class="pt-120 hero-banner flex justify-center add-movie">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="hero-content flex justify-center">
+              <h1><%= movie.title %></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Movie Details -->
+    <section class="py-120">
+      <div class="container">
+        <div class="movie-detail-card flex">
+
+          <div class="movie-detail-left">
+            <img src="/assets/uploads/<%= movie.image %>" alt="<%= movie.title %>" class="detail-poster" />
+          </div>
+
+          <div class="movie-detail-right">
+            <h2><%= movie.title %></h2>
+            <p class="detail-desc"><%= movie.desc %></p>
+
+            <div class="detail-info flex">
+              <div class="detail-row flex">
+                <span class="detail-label">Genre</span>
+                <span class="detail-value"><%= movie.genre %></span>
+              </div>
+              <div class="detail-row flex">
+                <span class="detail-label">Languages</span>
+                <span class="detail-value"><%= movie.languages.join(", ") %></span>
+              </div>
+              <div class="detail-row flex">
+                <span class="detail-label">Release Year</span>
+                <span class="detail-value"><%= movie.releaseYear %></span>
+              </div>
+              <div class="detail-row flex">
+                <span class="detail-label">Rating</span>
+                <span class="detail-value"><%= movie.rating %></span>
+              </div>
+              <div class="detail-row flex">
+                <span class="detail-label">Actors</span>
+                <span class="detail-value"><%= movie.actors.join(", ") %></span>
+              </div>
+              <div class="detail-row flex">
+                <span class="detail-label">Director</span>
+                <span class="detail-value"><%= movie.director.join(", ") %></span>
+              </div>
+            </div>
+
+            <div class="detail-actions flex">
+              <a href="/editMovie/<%= movie._id %>" class="btn-edit">Edit</a>
+              <a href="/deleteMovie/<%= movie._id %>" class="btn-delete">Delete</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <%- include('footer') %>
+
+</body>
+</html>

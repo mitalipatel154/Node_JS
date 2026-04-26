@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Movie</title>
+    <!-- font css -->
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="/assets/css/index.css" />
+</head>
+
+<body>
+
+    <%- include('header') %>
+        <main>
+
+            <!-- Hero Banner -->
+            <section class="pt-120 hero-banner flex justify-center add-movie">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="hero-content flex justify-center">
+                                <h1>Edit Movie</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Edit Form -->
+            <section class="py-120">
+                <div class="container">
+                    <div class="row flex justify-center">
+                        <div class="col-7">
+                            <form action="/editMovie/<%= movie._id %>" method="post" class="add-movie-form">
+
+                                <div class="form-row">
+                                    <input type="text" name="title" placeholder="Title" value="<%= movie.title %>"
+                                        required />
+                                    <input type="text" name="languages" placeholder="Languages"
+                                        value="<%= movie.languages.join(', ') %>" />
+                                </div>
+
+                                <div class="form-row">
+                                    <input type="number" name="releaseYear" placeholder="Release Year"
+                                        value="<%= movie.releaseYear %>" />
+                                    <input type="text" name="genre" placeholder="Genre" value="<%= movie.genre %>" />
+                                </div>
+
+                                <div class="form-row">
+                                    <input type="number" name="rating" placeholder="Rating"
+                                        value="<%= movie.rating %>" />
+                                    <input type="text" name="duration" placeholder="Duration (e.g. 2h 30m)"
+                                        value="<%= movie.duration %>" />
+                                </div>
+
+                                <div class="form-row">
+                                    <input type="text" name="actors" placeholder="Actors"
+                                        value="<%= movie.actors.join(', ') %>" />
+                                    <input type="text" name="director" placeholder="Director"
+                                        value="<%= movie.director.join(', ') %>" />
+                                </div>
+
+                                <div class="form-row single">
+                                    <textarea name="desc" placeholder="Description"
+                                        rows="5"><%= movie.desc %></textarea>
+                                </div>
+
+                                <div class="form-row">
+                                    <img src="/assets/uploads/<%= movie.image %>" alt="current poster" class="poster-img"/>
+                                    <input type="file" name="poster" />
+                                </div>
+
+                                <div class="action-btns">
+                                    <button type="submit" class="submit-btn">Update</button>
+                                    <a href="/viewMovie" class="btn-cancel">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    <%- include('footer') %>
+</body>
+</html>
