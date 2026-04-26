@@ -1,212 +1,235 @@
-# 🎬 Netflix Movie App
+# 🚀 Real-Time Todo Management System
 
-A full-stack movie management web application built with **Node.js**, **Express**, **MongoDB**, and **EJS** — inspired by Netflix UI.
+A **modern, professional Todo Management System** built using **Node.js, Express.js, EJS, and Bootstrap** with a **premium dark UI** and real-time styled task updates.
+
+---
+
+## 📌 Project Overview
+
+This application simulates a **real productivity dashboard** where users can:
+
+* ➕ Create new tasks
+* 📋 View all tasks in a structured dashboard
+* ✏️ Edit existing tasks
+* 🗑️ Delete tasks
+* 🔄 Update task status (Pending → In Progress → Completed)
+
+All operations are handled dynamically using **server-side rendering (EJS)** and **in-memory storage**.
+
+---
+
+## 🛠️ Tech Stack
+
+* ⚙️ Backend: Node.js + Express.js
+* 🎨 Frontend: EJS Templates
+* 💅 UI Framework: Bootstrap (Offline)
+* 🎯 Icons: Bootstrap Icons
+* ✍️ Fonts: Google Fonts (Syne + DM Sans)
+* 📦 Storage: Local Array (No Database)
+
+---
+
+## ✨ Key Features
+
+### 📊 Dashboard
+
+* Real-time task statistics:
+
+  * Total Tasks
+  * Pending Tasks
+  * In Progress Tasks
+  * Completed Tasks
+* Responsive task table
+* Empty state UI when no tasks exist
+
+---
+
+### ➕ Task Management
+
+* Add new task with:
+
+  * Title
+  * Description
+  * Priority (Low / Medium / High)
+* Default status: **Pending**
+
+---
+
+### ✏️ Edit Task
+
+* Pre-filled form
+* Update title, description, priority
+* Clean UI with status indicator
+
+---
+
+### 🔄 Task Status Flow
+
+* Pending → In Progress → Completed → (loop reset)
+* Animated status indicators
+
+---
+
+### 🗑️ Delete Task
+
+* Confirmation popup before deletion
+* Instant UI update
+
+---
+
+### 🎨 UI/UX Highlights
+
+* 🌙 Premium Dark Theme
+* 🎯 Glassmorphism Navbar
+* 📦 Card-based layout
+* ✨ Hover effects & animations
+* 📱 Fully responsive design
+* 🔔 Auto-dismiss alerts
 
 ---
 
 ## 📁 Project Structure
 
 ```
-Netflix/
-├── config/
-│   └── db.js
-├── controllers/
-│   └── movieController.js
-├── models/
-│   └── movieSchema.js
-├── public/
-│   └── assets/
-│       ├── css/
-│       │   ├── fonts.css
-│       │   └── index.css
-│       ├── fonts/
-│       ├── images/
-│       ├── js/
-│       └── uploads/
-├── routes/
-│   └── movieRoutes.js
-├── views/
-│   ├── addMovie.ejs
-│   ├── editMovie.ejs
-│   ├── footer.ejs
-│   ├── header.ejs
-│   ├── index.ejs
-│   ├── movieDetails.ejs
-│   └── viewMovie.ejs
-├── app.js
-├── package.json
-└── README.md
+TodoApp/
+│── views/
+│   ├── partials/
+│   │   ├── header.ejs
+│   │   ├── footer.ejs
+│   │
+│   ├── dashboard.ejs
+│   ├── add-task.ejs
+│   ├── edit-task.ejs
+│
+│── public/
+│   ├── css/
+│   │   ├── bootstrap-icons.min.css
+│   │   ├── bootstrap.min.css
+│   │   └── style.css
+│   │
+│   ├── js/
+│   │   └── bootstrap.bundle.min.js
+│   │
+│   ├── fonts/
+│   
+│
+│── app.js
+│── package.json
 ```
-
----
-
-## 🚀 Features
-
-- 🏠 Home page with **Trending Now** section
-- ➕ Add new movies with poster image upload
-- 📋 View all movies in a **table** with full details
-- 🔍 Click on movie poster to view **movie details**
-- ✏️ Edit movie details including image and duration
-- 🗑️ Delete movies with confirmation prompt
-- 📁 Image upload handled via **Multer**
-- 🗄️ Data stored in **MongoDB** via Mongoose
-
----
-
-## 🛠️ Tech Stack
-
-| Technology | Usage |
-|------------|-------|
-| Node.js | Runtime environment |
-| Express.js | Web framework |
-| MongoDB | Database |
-| Mongoose | ODM for MongoDB |
-| EJS | Templating engine |
-| Multer | File/image upload |
-| Nodemon | Auto server restart |
 
 ---
 
 ## ⚙️ Installation & Setup
 
-### 1. Clone the repository
+### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/netflix-movie-app.git
-cd netflix-movie-app
+git clone <your-repo-url>
+cd TodoApp
 ```
 
-### 2. Install dependencies
+### 2️⃣ Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Make sure MongoDB is running
+### 3️⃣ Run the server
 
 ```bash
-mongod
+npm start
 ```
 
-> MongoDB runs on `mongodb://127.0.0.1:27017/movieproject` by default.
-
-### 4. Create uploads folder
-
-Make sure this folder exists for image uploads:
-
-```bash
-mkdir -p public/assets/uploads
-```
-
-### 5. Start the server
-
-```bash
-# Using nodemon (recommended)
-nodemon app.js
-
-# Or using node
-node app.js
-```
-
-### 6. Open in browser
+### 4️⃣ Open in browser
 
 ```
-http://localhost:9000
+http://localhost:3001
 ```
 
 ---
 
-## 📌 Routes
+## 🧠 How It Works
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/` | Home page - Trending movies |
-| GET | `/movies` | Home page - Trending movies |
-| GET | `/addMovie` | Show add movie form |
-| POST | `/addMovie` | Save new movie to DB |
-| GET | `/viewMovie` | View all movies in table |
-| GET | `/movieDetails/:id` | View single movie details |
-| GET | `/editMovie/:id` | Show edit movie form |
-| POST | `/editMovie/:id` | Update movie in DB |
-| GET | `/deleteMovie/:id` | Delete movie from DB |
+* Tasks are stored in a **local array**
+* Each task has:
 
----
-
-## 🗃️ Movie Schema
-
-```javascript
+```js
 {
-  title:       String  (required),
-  languages:   [String] (required),
-  desc:        String  (required),
-  releaseYear: String  (required),
-  genre:       String  (required),
-  rating:      Number  (default: 0),
-  actors:      [String] (default: []),
-  director:    [String] (default: []),
-  duration:    String  (default: ""),
-  image:       String  (default: null)
+  id,
+  title,
+  description,
+  priority,
+  status
 }
 ```
+
+* Express routes handle:
+
+  * GET → Render pages
+  * POST → Perform CRUD operations
+
+* EJS dynamically updates UI based on data
+
+---
+
+## 🎯 Core Modules
+
+| Module         | Description                      |
+| -------------- | -------------------------------- |
+| Dashboard      | Displays statistics + task table |
+| Add Task       | Form to create new tasks         |
+| Edit Task      | Update existing task             |
+| Delete Task    | Remove task                      |
+| Status Manager | Controls task lifecycle          |
+
+---
+
+## 🔥 Advanced UI Features
+
+* 🎨 CSS Variables for theme control
+* 💡 Animated status indicators
+* 🧩 Modular EJS partials (header/footer)
+* 🧠 Smart alerts system
+* 🖱️ Hover interaction effects
 
 ---
 
 ## 📸 Screenshots
 
-| Page | Description |
-|------|-------------|
-| Home | Trending movies with poster cards |
-| Add Movie | Form to add a new movie |
-| View Movie | Table with all movies and actions |
-| Movie Details | Full detail page of a single movie |
-| Edit Movie | Pre-filled form to update movie |
+### 📊 Dashboard
+
+<img src="./public/screenshots/dashboard.png" width="700">
+
+### ➕ Add Task
+<img src="./public/screenshots/add-task.png" width="700">
+
+### ✏️ Edit Page
+
+<img src="./public/screenshots/Edit-task.png" width="700">
 
 ---
 
-## 📦 Dependencies
+## 🚀 Future Enhancements
 
-```json
-{
-  "express": "^4.x",
-  "mongoose": "^7.x",
-  "ejs": "^3.x",
-  "multer": "^1.x",
-  "nodemon": "^3.x"
-}
-```
-
-Install all at once:
-
-```bash
-npm install express mongoose ejs multer
-npm install --save-dev nodemon
-```
+* 🔍 Search & Filter tasks
+* 📄 Pagination
+* 💾 JSON / Database storage (MongoDB)
+* 👤 User Authentication
+* 🌐 API Integration
+* 🌙 Light/Dark toggle
 
 ---
 
-## 🔧 package.json Scripts
+## 🎓 Learning Outcomes
 
-```json
-"scripts": {
-  "start": "node app.js",
-  "dev": "nodemon app.js"
-}
-```
-
-Run in dev mode:
-
-```bash
-npm run dev
-```
+* Understanding of **MVC-like structure**
+* Hands-on with **Express routing**
+* Dynamic UI using **EJS templating**
+* Real-world **CRUD operations**
+* UI design with **Bootstrap + Custom CSS**
 
 ---
 
-## 👤 Author
+## 👨‍💻 Author
 
-**Mitali Patel**  
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
+**Mitali Patel**
